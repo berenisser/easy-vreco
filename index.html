@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Easy Vreco</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Raleway:400,700,900" rel="stylesheet">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	<section>
+		<div class="row">
+			<div class="col-md-3 col-sm-12">
+				<button id="encuentrame">Encuéntrame</button>
+			</div>
+			<div class="col-md-3 col-sm-12">
+				<input id="origen" type="text" placeholder="Tu Origen">
+			</div>
+			<div class="col-md-3 col-sm-12">
+				<input id="destino" type="text" placeholder="Tu Destino">
+			</div>
+			<div class="col-md-3 col-sm-12">
+				<button id="ruta">Ruta</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 col-sm-12" id="map">
+				<!-- mapa -->
+			</div>
+		</div>
+	</section>
+
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjq1aEr9V0F3YvzuhhdKuFlmPvJs7H9a4&callback=initMap&library=places"
+  type="text/javascript"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjq1aEr9V0F3YvzuhhdKuFlmPvJs7H9a4&libraries=places"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="assets/js/main.js"></script>
+</body>
+</html>
