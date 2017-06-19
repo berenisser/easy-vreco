@@ -7,11 +7,6 @@ function initMap(){
 		streetViewControl: false
 	});
 
-	var origen = document.getElementById("origen");
-	map.controls[google.maps.ControlPosition.TOP_LEFT].push(origen);
-
-
-
 
 	function buscar(){
 		if(navigator.geolocation){
@@ -39,4 +34,13 @@ function initMap(){
 	var funcionError = function(error){
 		alert("Tenemos problemas encontrando tu ubicación");
 	}
+
+//autocompletado
+	var origen = document.getElementById("origen");
+	var autocomplete = new google.maps.places.Autocomplete(origen);
+ 	autocomplete.bindTo('bounds', map);
+
+ 	var destino = document.getElementById("destino");
+	var autocomplete = new google.maps.places.Autocomplete(destino);
+ 	autocomplete.bindTo('bounds', map);
 }
