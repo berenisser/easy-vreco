@@ -43,4 +43,40 @@ function initMap(){
  	var destino = document.getElementById("destino");
 	var autocomplete = new google.maps.places.Autocomplete(destino);
  	autocomplete.bindTo('bounds', map);
+
+//ruta....Primero se declaran 2 objetos globales
+	var directionsDisplay = new google.maps.DirectionsRenderer();
+	var directionsService = new google.maps.DirectionsService();
+
+	 
+
+	directionsDisplay.setMap(map);
+
+        var onChangeHandler = function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+
+     document.getElementById("ruta").addEventListener("click",onChangeHandler);
+        
+       /* document.getElementById('origen').addEventListener('change', onChangeHandler);
+        document.getElementById('destino').addEventListener('change', onChangeHandler);*/
+
+
+	function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+		directionsService.route({
+			origin: document.getElementById('origen').value,
+			destination: document.getElementById('destino').value,
+			travelMode: 'DRIVING'
+		}, function(response, status) {
+			if (status === 'OK') {
+				directionsDisplay.setDirections(response);
+			} else {
+				window.alert('Directions request failed due to ' + status);
+			}
+		});
+	}
+
+
 }
+
+
