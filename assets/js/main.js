@@ -52,7 +52,7 @@ function initMap(){
 /*ruta....Primero se declaran 2 objetos globales
 REFERENCIA: https://developers.google.com/maps/documentation/javascript/examples/directions-simple?hl=es-419
 */
-	var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
+	var directionsDisplay = new google.maps.DirectionsRenderer(/*{suppressMarkers: true}*/);
 	var directionsService = new google.maps.DirectionsService();
 
 	 
