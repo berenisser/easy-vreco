@@ -7,7 +7,9 @@ function initMap(){
 		streetViewControl: false
 	});
 
-
+	//imagen nueva de drop pin en encuentrame en variable mi Ubicacion
+	var image = 'https://image.flaticon.com/icons/png/128/71/71422.png';
+  	
 	function buscar(){
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
@@ -24,7 +26,8 @@ function initMap(){
 		var miUbicacion = new google.maps.Marker({
 			position : {lat: latitud, lng: longitud},
 			animation: google.maps.Animation.DROP,
-			map: map
+			map: map,
+			icon: image
 		});
 
 		map.setZoom(17);
@@ -44,8 +47,10 @@ function initMap(){
 	var autocomplete = new google.maps.places.Autocomplete(destino);
  	autocomplete.bindTo('bounds', map);
 
-//ruta....Primero se declaran 2 objetos globales
-	var directionsDisplay = new google.maps.DirectionsRenderer();
+/*ruta....Primero se declaran 2 objetos globales
+REFERENCIA: https://developers.google.com/maps/documentation/javascript/examples/directions-simple?hl=es-419
+*/
+	var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 	var directionsService = new google.maps.DirectionsService();
 
 	 
@@ -53,13 +58,16 @@ function initMap(){
 	directionsDisplay.setMap(map);
 
         var onChangeHandler = function() {
-          calculateAndDisplayRoute(directionsService, directionsDisplay);
+         calculateAndDisplayRoute(directionsService, directionsDisplay);
         };
 
      document.getElementById("ruta").addEventListener("click",onChangeHandler);
         
-       /* document.getElementById('origen').addEventListener('change', onChangeHandler);
-        document.getElementById('destino').addEventListener('change', onChangeHandler);*/
+       /* 
+		estos hacen que despues de cambiar las direcciones se envie la info
+
+       document.getElementById('origen').addEventListener('change', onChangeHandler);
+       document.getElementById('destino').addEventListener('change', onChangeHandler);*/
 
 
 	function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -75,6 +83,52 @@ function initMap(){
 			}
 		});
 	}
+
+
+/*
+	// Start/Finish icons
+ var icons = {
+  start: new google.maps.MarkerImage(
+   // URL
+   'http://icons.iconarchive.com/icons/icons8/windows-8/128/Transport-Bicycle-icon.png',
+   // (width,height)
+   new google.maps.Size( 44, 32 ),
+   // The origin point (x,y)
+   new google.maps.Point( 0, 0 ),
+   // The anchor point (x,y)
+   new google.maps.Point( 22, 32 )
+  ),
+  end: new google.maps.MarkerImage(
+   // URL
+   'http://icons.iconarchive.com/icons/icons8/windows-8/128/Transport-Bicycle-icon.png',
+   // (width,height)
+   new google.maps.Size( 44, 32 ),
+   // The origin point (x,y)
+   new google.maps.Point( 0, 0 ),
+   // The anchor point (x,y)
+   new google.maps.Point( 22, 32 )
+  )
+ };
+
+directionsService.route( { 
+	origin: origen, 
+	destination: destino 
+}, function( response, status ) {
+ if ( status == google.maps.DirectionsStatus.OK ) {
+  display.setDirections( response );
+  var leg = response.routes[ 0 ].legs[ 0 ];
+  makeMarker( leg.start_location, icons.start);
+  makeMarker( leg.end_location, icons.end);
+ }
+});
+
+function makeMarker( position, icon) {
+ new google.maps.Marker({
+  position: position,
+  map: map,
+  icon: icon
+ });
+}    */
 
 
 }
