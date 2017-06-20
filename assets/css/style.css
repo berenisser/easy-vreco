@@ -10,7 +10,7 @@
 }
 
 button{
-	margin: 15px auto;
+	margin: 15px 0;
 	padding: 10px 15px;
 	color: white;
 	background-color: #faae27;
@@ -20,6 +20,7 @@ button{
 	font-family: "Raleway";
 	font-size: 15px;
 	display: block;
+	width: 100%;
 }
 
 button:hover, button:focus{
@@ -28,6 +29,14 @@ button:hover, button:focus{
 
 input{
 	margin: 15px auto;
-	padding: 10px 15px;
-	
+	padding: 10px 0;
+	width: 100%;
 }
+
+/*#encuentrame{
+	margin-left: 15px;
+}
+
+#ruta{
+	margin-right: 15px;
+}*/

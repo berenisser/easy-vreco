@@ -9,7 +9,9 @@ function initMap(){
 
 	//imagen nueva de drop pin en encuentrame en variable mi Ubicacion
 	var image = 'https://image.flaticon.com/icons/png/128/71/71422.png';
-  	
+  	//var image = "<img src='https://image.flaticon.com/icons/png/128/71/71422.png' width='40px' height='40px'>";
+
+
 	function buscar(){
 		if(navigator.geolocation){
 			navigator.geolocation.getCurrentPosition(funcionExito, funcionError);
